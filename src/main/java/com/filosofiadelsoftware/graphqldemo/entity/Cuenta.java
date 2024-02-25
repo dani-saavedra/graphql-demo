@@ -23,9 +23,8 @@ public class Cuenta {
   @Column(name = "cuenta_id")
   private int cuentaId;
 
-  @ManyToOne
-  @JoinColumn(name = "cliente_id")
-  private Cliente cliente;
+  @Column(name = "cliente_id")
+  private Integer clienteId;
 
   @Column(name = "tipo_cuenta")
   private String tipoCuenta;

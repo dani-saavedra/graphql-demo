@@ -5,7 +5,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import java.util.List;
 import lombok.Data;
 
 @Entity
@@ -27,4 +29,6 @@ public class Cliente {
 
   private String telefono;
 
+  @OneToMany(mappedBy = "clienteId")
+  private List<Cuenta> cuentas;
 }

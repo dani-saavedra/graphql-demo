@@ -5,6 +5,7 @@ type Cliente {
     direccion: String!
     correoElectronico: String!
     telefono: String!
+    cuentas: [Cuenta]
 }
 
 type Cuenta {

@@ -8,6 +8,7 @@ VALUES (1, 'Juan', 'Perez', 'Calle 123', 'juan@example.com', '1234567890'),
 
 INSERT INTO Cuentas (cuenta_id, cliente_id, tipo_cuenta, saldo, fecha_apertura)
 VALUES (1, 1, 'Corriente', 1000.00, '2023-01-01'),
+       (6, 1, 'Ahorros', 5000.00, '2023-02-01'),
        (2, 2, 'Ahorros', 5000.00, '2023-02-01'),
        (3, 3, 'Corriente', 3000.00, '2023-03-01'),
        (4, 4, 'Ahorros', 2000.00, '2023-04-01'),
