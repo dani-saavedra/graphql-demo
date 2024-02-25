@@ -13,6 +13,7 @@ public class QueryController {
 
   private final ClienteRepository clienteRepository;
 
+
   @QueryMapping
   public Cliente cliente(@Argument Integer clienteId) {
     return clienteRepository.findById(clienteId).orElse(null);
