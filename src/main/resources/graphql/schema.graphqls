@@ -1,0 +1,49 @@
+type Cliente {
+    clienteId: ID!
+    nombre: String!
+    apellido: String!
+    direccion: String!
+    correoElectronico: String!
+    telefono: String!
+}
+
+type Cuenta {
+    cuentaId: ID!
+    cliente: Cliente!
+    tipoCuenta: String!
+    saldo: Int!
+    fechaApertura: String!
+}
+
+type Transaccion {
+    transaccionId: ID!
+    cuentaOrigen: Cuenta!
+    cuentaDestino: Cuenta!
+    monto: Int!
+    tipoTransaccion: String!
+    fecha: String!
+}
+
+type Empleado {
+    empleadoId: ID!
+    nombre: String!
+    apellido: String!
+    cargo: String!
+    sucursal: Sucursal!
+}
+
+type Sucursal {
+    sucursalId: ID!
+    nombreSucursal: String!
+    direccion: String!
+    telefono: String!
+    ciudad: String!
+}
+
+type Query {
+    cliente(clienteId: ID!): Cliente
+    #cuentasDeCliente(clienteId: ID!): [Cuenta]
+    #transaccionesDeCuenta(cuentaId: ID!): [Transaccion]
+    #empleado(empleadoId: ID!): Empleado
+    #sucursal(sucursalId: ID!): Sucursal
+}
