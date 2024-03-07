@@ -2,37 +2,44 @@ package com.filosofiadelsoftware.graphqldemo.service;
 
 import com.filosofiadelsoftware.graphqldemo.entity.Profesor;
 import com.filosofiadelsoftware.graphqldemo.repository.ProfesorRepository;
-import java.util.List;
+import java.util.Optional;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 
 @Service
 public class ProfesorService {
 
-  private final ProfesorRepository repository;
+  ProfesorRepository repository;
 
   public ProfesorService(ProfesorRepository repository) {
     this.repository = repository;
   }
 
-  //Los profesores de Informatica deben ser mayor a 25
-//Los medicina mayores a 30
-//Cualquier otro solo debe ser mayor de edad(18)
-  public String guardarProfesor(Profesor profesor) {
-    //Evaluar constante contra variables, no variables contra constantes.
-    if ("Informatica".equals(profesor.getCarrera()) && profesor.getEdad() < 25) {
-      throw new IllegalArgumentException("Profesor no cumple con requisitos de la carrera");
+  public int sumar(int x, int y) {
+    return x + y;
+  }
+
+  public boolean validarNombrePermitido(Profesor profesor) {
+    if ("Orlando".equals(profesor.getNombre())) {
+      return false;
     }
-    repository.save(profesor);
-    return "Profesor Guardado";
+    return true;
   }
 
-  public Profesor obtenerProfesor(Integer id) {
-    return repository.findById(id).orElse(null);
+  public int calcularSalario(Profesor profesor) {
+    if (profesor.getEdad() >= 33 && "Informatica".equals(profesor.getCarrera())) {
+      repository.delete(profesor);
+      return 100;
+    }
+    if (profesor.getEdad() >= 30) {
+      return 50;
+    } else {
+      return 20;
+    }
   }
 
-  public List<Profesor> obtenerProfesores() {
-    return repository.findAll();
+  public Boolean validarCarrera(int id) {
+    Optional<Profesor> opt = repository.findById(id);
+    return opt.isPresent() && (opt.get().getCarrera().equals("Informatica"));
   }
+
 }
