@@ -24,8 +24,7 @@ public class Profesor {
   private String carrera;
 
   @Column
-  private Integer
-      edad;
+  private Integer edad;
 
   @Column
   private String ciudadResidencia;

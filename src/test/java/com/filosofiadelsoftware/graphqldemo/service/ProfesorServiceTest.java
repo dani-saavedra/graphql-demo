@@ -8,6 +8,7 @@ import static org.mockito.Mockito.when;
 import com.filosofiadelsoftware.graphqldemo.entity.Profesor;
 import com.filosofiadelsoftware.graphqldemo.repository.ProfesorRepository;
 import java.util.Optional;
+import javax.sound.sampled.Port;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -74,6 +75,21 @@ class ProfesorServiceTest {
 
     Boolean result = service.validarCarrera(5);
     assertTrue(result);
+
+  }
+
+  @Test
+  void DadoCarreraInformatica_CuandoCalculeBono_Entonces20() {
+    //AAA preracion, ejecucion, validacion
+    // GIVEN WHEN THEN: el nombre del metodo
+    //when();
+    Profesor profesor = new Profesor();
+    profesor.setCarrera("Informatica");
+
+    int bono = service.calcularBonoAnual(profesor);
+
+    assertEquals(20, bono);
+
 
   }
 }

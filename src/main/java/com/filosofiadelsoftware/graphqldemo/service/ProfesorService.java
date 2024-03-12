@@ -42,4 +42,13 @@ public class ProfesorService {
     return opt.isPresent() && (opt.get().getCarrera().equals("Informatica"));
   }
 
+  public int calcularBonoAnual(Profesor profesor) {
+    if ("Informatica".equals(profesor.getCarrera())) {
+      return 20;
+    } else if ("Medicina".equals(profesor.getCarrera())) {
+      return 10;
+    } else {
+      return 5;
+    }
+  }
 }
